@@ -16,10 +16,17 @@ function createGrid(dim) {
         container.appendChild(square);
 
         square.addEventListener("mouseenter", event => {
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
-            event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            if (event.target.style.backgroundColor == "white") {
+                // Not colored before
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                event.target.style.opacity = "0.1";
+            } else {
+                // Colored before, change opacity
+                event.target.style.opacity = `${Number(event.target.style.opacity) + 0.1}`;
+            }
         });
     }
 }

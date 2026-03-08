@@ -44,6 +44,11 @@ button {
     color: white;
 }
 
+#note {
+    color: white;
+    font-size: 10px;
+}
+
 .header-footer  {
     width: 100vw;
     background-color: #38405F;
