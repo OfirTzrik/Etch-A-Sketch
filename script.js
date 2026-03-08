@@ -1,30 +1,45 @@
 const container = document.querySelector("#grid-container");
+const btn = document.querySelector("button");
+const info = document.querySelector("#info");
 
-function createGrid() {
-    for (let i = 0; i < 256; i++) {
+function createGrid(dim) {
+    for (let i = 0; i < dim * dim; i++) {
         const square = document.createElement("div");
 
         // Make the grid fit the container no matter the size
-        square.style.height = `${512 / 16}px`;
-        square.style.width = `${512 / 16}px`;
+        square.style.height = `${512 / dim}px`;
+        square.style.width = `${512 / dim}px`;
         square.style.backgroundColor = "white"
-        square.style.borderBottom = "1px solid black";
-        square.style.borderRight = "1px solid black";
 
         square.classList.add("square");
         
         container.appendChild(square);
+
+        square.addEventListener("mouseenter", event => {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        });
     }
 }
 
-createGrid();
+createGrid(16);
 
-const grid = document.querySelectorAll(".square");
-for (const square of grid) {
-    square.addEventListener("mouseenter", event => {
-        const r = Math.floor(Math.random() * 256);
-        const g = Math.floor(Math.random() * 256);
-        const b = Math.floor(Math.random() * 256);
-        event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-    });
+function resetGrid() {
+    const grid = document.querySelectorAll(".square");
+    for (const square of grid) {
+        square.remove();
+    }
 }
+
+btn.addEventListener("click", () => {
+    const newDim = parseInt(prompt("How many rows will the new grid have? (8 to 100)"));
+
+    // Only make changes if a number in the allowed range was passed
+    if (!(Number.isNaN(newDim) || newDim < 8 || newDim > 100)) {
+        resetGrid();
+        createGrid(newDim);
+        info.textContent = `Grid is ${newDim}x${newDim}`;
+    }
+});

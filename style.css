@@ -1,7 +1,6 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -10,7 +9,27 @@ body {
     align-items: center;
     justify-content: space-between;
     height: 100vh;
-    font-family: "JetBrains Mono"
+    font-family: "JetBrains Mono", Arial;
+    background: #59546C;
+    background: linear-gradient(90deg, rgba(89, 84, 108, 1) 0%, rgba(255, 0, 53, 1) 100%);
+}
+
+h1 {
+    padding: 16px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+button {
+    height: 48px;
+    width: 256px;
+    font-family: "JetBrains Mono", Arial;
+    border: 1px solid black;
 }
 
 #grid-container {
@@ -18,4 +37,29 @@ body {
     flex-wrap: wrap;
     max-width: 512px;
     max-height: 512px;
+    border: 1px solid black;
+}
+
+#info {
+    color: white;
+}
+
+.header-footer  {
+    width: 100vw;
+    background-color: #38405F;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px 3px black;
+}
+
+#header {
+    height: 48px;
+    border-bottom: 1px solid black;
+}
+
+#footer {
+    height: 32px;
+    border-top: 1px solid black;
 }
